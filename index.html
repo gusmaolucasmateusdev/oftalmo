@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#303b2b">
+  <meta name="description" content="Dr. Lucas Gusmão, oftalmologista em Belém - PA. Conheça os serviços e solicite seu agendamento pelo WhatsApp.">
+  <title>Dr. Lucas Gusmão | Oftalmologista</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --paper: #f8f6f0;
+      --paper-deep: #efede3;
+      --olive: #303b2b;
+      --olive-2: #46533d;
+      --sage: #a9ad98;
+      --beige: #e5ddce;
+      --ink: #252a24;
+      --muted: #666b61;
+      --white: #fffefa;
+      --line: rgba(48, 59, 43, .15);
+      --shadow: 0 18px 55px rgba(39, 44, 34, .08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow {
+      color: var(--olive-2); font-size: 10px; font-weight: 700;
+      letter-spacing: .22em; text-transform: uppercase;
+    }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+    h1 { font-size: clamp(48px, 6vw, 78px); line-height: .98; letter-spacing: -.035em; }
+    h2 { font-size: clamp(36px, 4vw, 51px); line-height: 1.04; letter-spacing: -.025em; }
+    h3 { font-size: 26px; line-height: 1.1; }
+    p { color: var(--muted); }
+    .section { padding: 100px 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 11px;
+      min-height: 48px; padding: 13px 21px; border: 1px solid var(--olive);
+      border-radius: 3px; background: var(--olive); color: white;
+      font-size: 11px; font-weight: 600; letter-spacing: .025em;
+      transition: transform .25s ease, background .25s ease, color .25s ease;
+    }
+    .btn:hover { background: var(--olive-2); transform: translateY(-2px); }
+    .btn-outline { color: var(--olive); background: transparent; }
+    .btn-outline:hover { color: white; }
+    .text-link { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; border-bottom: 1px solid var(--olive); padding-bottom: 6px; }
+    .text-link i { transition: transform .2s; }
+    .text-link:hover i { transform: translateX(4px); }
+
+    /* Header */
+    .header {
+      height: 82px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000;
+      background: rgba(248, 246, 240, .94); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(48, 59, 43, .08);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--olive); min-width: 230px; }
+    .brand-mark { width: 42px; height: 31px; border: 1px solid var(--olive); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; display: grid; place-items: center; transform: rotate(-3deg); }
+    .brand-mark i { font-size: 18px; transform: rotate(3deg); }
+    .brand-name { display: block; font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; line-height: 1.05; letter-spacing: .04em; }
+    .brand-sub { display: block; margin-top: 4px; font-size: 8px; font-weight: 700; letter-spacing: .28em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 31px); }
+    .nav-links a { font-size: 10px; font-weight: 500; color: #51564c; transition: color .2s; }
+    .nav-links a:hover { color: var(--olive); }
+    .nav-cta { min-height: 42px; padding: 10px 15px; font-size: 10px; white-space: nowrap; }
+    .menu-toggle { display: none; width: 42px; height: 42px; background: none; border: 1px solid var(--line); color: var(--olive); }
+
+    /* Hero */
+    .hero { min-height: 610px; display: grid; grid-template-columns: .9fr 1.1fr; background: var(--paper-deep); overflow: hidden; }
+    .hero-copy { display: flex; align-items: center; justify-content: flex-end; padding: 75px 7% 75px max(24px, calc((100vw - 1180px)/2)); }
+    .hero-content { max-width: 470px; }
+    .hero h1 { margin: 20px 0 23px; }
+    .hero h1 span { display: block; color: var(--olive-2); font-style: italic; }
+    .hero-copy p { max-width: 410px; font-size: 13px; line-height: 1.95; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-location { margin-top: 26px; font-size: 11px; display: flex; align-items: center; gap: 8px; color: var(--muted); }
+    .hero-location i { color: var(--olive); }
+    .hero-visual { position: relative; min-height: 610px; }
+    .hero-visual img { height: 100%; min-height: 610px; object-position: 48% center; }
+    .hero-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(239,237,227,.25), transparent 30%), linear-gradient(0deg, rgba(38,45,33,.08), transparent 35%); pointer-events: none; }
+    .hero-note { position: absolute; z-index: 1; right: 8%; top: 17%; color: white; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.05; letter-spacing: .04em; text-shadow: 0 1px 10px #3335; }
+    .hero-note span { display: block; }
+
+    /* Intro */
+    .about-grid { display: grid; grid-template-columns: .9fr 1fr; gap: clamp(40px, 8vw, 105px); align-items: center; }
+    .about-photo { position: relative; padding: 0 28px 28px 0; }
+    .about-photo img { height: 470px; }
+    .about-photo::after { content: ""; position: absolute; z-index: -1; right: 0; bottom: 0; width: 72%; height: 70%; border: 1px solid #b8b8a6; }
+    .about-copy h2 { margin: 14px 0 22px; }
+    .about-copy p + p { margin-top: 14px; }
+    .credentials { display: grid; gap: 17px; margin-top: 29px; }
+    .credential { display: flex; align-items: flex-start; gap: 14px; }
+    .credential i { width: 25px; margin-top: 3px; color: var(--olive); font-size: 19px; }
+    .credential strong { display: block; color: var(--ink); font-size: 11px; font-weight: 600; }
+    .credential span { display: block; color: var(--muted); font-size: 10px; }
+
+    /* Services */
+    .services { background: #efede4; }
+    .services-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 70px; align-items: center; }
+    .services-intro h2 { margin: 15px 0 20px; }
+    .services-intro p { max-width: 360px; font-size: 12px; }
+    .services-intro .btn { margin-top: 27px; }
+    .service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .service-card {
+      min-height: 170px; padding: 26px 15px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; gap: 16px;
+      background: rgba(255,255,255,.55); border: 1px solid transparent; transition: .25s ease;
+    }
+    .service-card:hover { background: var(--white); border-color: #d4d3c6; transform: translateY(-4px); box-shadow: var(--shadow); }
+    .service-card i { font-size: 27px; color: var(--olive); }
+    .service-card h3 { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; line-height: 1.55; }
+    .service-card p { font-size: 10px; line-height: 1.7; }
+
+    /* Steps */
+    .steps-heading { max-width: 680px; margin-bottom: 46px; }
+    .steps-heading h2 { margin: 12px 0; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+    .step { position: relative; padding: 8px 22px 0 0; }
+    .step:not(:last-child)::after { content: "→"; position: absolute; top: 12px; right: 0; color: #a6ab9b; font-size: 28px; font-family: 'Cormorant Garamond', serif; }
+    .step-top { display: flex; align-items: center; gap: 15px; margin-bottom: 19px; }
+    .step-number { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; background: var(--olive); color: white; font-size: 10px; font-weight: 600; }
+    .step-top i { font-size: 24px; color: var(--olive); }
+    .step h3 { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+    .step p { max-width: 290px; font-size: 11px; }
+
+    /* Clinic */
+    .clinic { background: var(--paper-deep); }
+    .clinic-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 430px; }
+    .clinic-photo { min-height: 430px; }
+    .clinic-photo img { height: 100%; min-height: 430px; }
+    .clinic-info { padding: clamp(35px, 6vw, 80px); display: flex; flex-direction: column; justify-content: center; }
+    .clinic-info h2 { margin: 13px 0 20px; }
+    .clinic-info > p { font-size: 12px; max-width: 460px; }
+    .clinic-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 30px 0; }
+    .detail { display: flex; align-items: flex-start; gap: 11px; }
+    .detail i { color: var(--olive); margin-top: 4px; }
+    .detail strong { display: block; font-size: 10px; color: var(--ink); }
+    .detail span { display: block; font-size: 10px; color: var(--muted); line-height: 1.7; }
+
+    /* Testimonials */
+    .testimonials { text-align: center; }
+    .testimonials h2 { margin: 12px 0 36px; }
+    .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
+    .quote { background: #fffefa; border: 1px solid #eeece3; padding: 25px; }
+    .quote .quote-mark { color: #9ca58d; font-family: Georgia, serif; font-size: 35px; line-height: 1; }
+    .quote p { font-size: 11px; margin: 10px 0 22px; }
+    .quote strong { font-size: 10px; display: block; }
+    .quote small { font-size: 10px; color: #a28a50; letter-spacing: .15em; }
+
+    /* Booking */
+    .booking { background: #e9e6dc; }
+    .booking-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 65px; align-items: start; }
+    .booking-intro h2 { margin: 13px 0 18px; }
+    .booking-intro p { font-size: 12px; }
+    .signature { margin-top: 38px; color: var(--olive); font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; }
+    .signature-name { color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 19px; margin-top: 4px; }
+    .booking-form { padding: clamp(24px, 4vw, 43px); background: var(--paper); box-shadow: var(--shadow); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #4e5549; font-size: 10px; font-weight: 600; }
+    .field input, .field select, .field textarea {
+      width: 100%; min-height: 45px; padding: 12px 13px; border: 1px solid #deded3;
+      border-radius: 2px; background: #fffefa; color: var(--ink); outline: none; font-size: 11px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field textarea { resize: vertical; min-height: 95px; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--olive-2); box-shadow: 0 0 0 3px rgba(70,83,61,.09); }
+    .field input::placeholder, .field textarea::placeholder { color: #9b9d93; }
+    .form-note { margin-top: 14px; font-size: 10px; color: var(--muted); }
+    .booking-form .btn { width: 100%; margin-top: 20px; }
+    .form-status { margin-top: 12px; font-size: 11px; color: #a23a2a; display: none; }
+
+    /* Footer */
+    .footer { background: var(--olive); color: #f5f3eb; padding: 42px 0 22px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.22); }
+    .footer .brand { color: #f5f3eb; }
+    .footer .brand-mark { border-color: #f5f3eb; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+    .footer-links a { font-size: 10px; color: #e4e5dc; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; color: #d1d5c9; font-size: 9px; }
+    .socials { display: flex; gap: 14px; }
+    .socials a { color: #f5f3eb; font-size: 15px; }
+    .whatsapp-float {
+      position: fixed; right: 23px; bottom: 22px; z-index: 900; width: 54px; height: 54px;
+      display: grid; place-items: center; background: #466348; color: white; border-radius: 50%;
+      box-shadow: 0 8px 25px #1d2b1d40; font-size: 25px; transition: transform .2s;
+    }
+    .whatsapp-float:hover { transform: translateY(-4px); }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1020px) {
+      .nav-links { gap: 14px; }
+      .brand { min-width: auto; }
+      .nav-cta { display: none; }
+      .hero { grid-template-columns: 1fr 1fr; }
+      .hero-copy { padding-left: 28px; padding-right: 28px; }
+      .services-grid { gap: 35px; }
+      .booking-grid { gap: 35px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 36px, 560px); }
+      .section { padding: 72px 0; }
+      .header { height: 72px; }
+      .brand-mark { width: 36px; height: 28px; }
+      .brand-name { font-size: 17px; }
+      .brand-sub { font-size: 7px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links {
+        display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; z-index: 1001;
+        padding: 35px 28px; background: var(--paper); flex-direction: column; align-items: stretch; gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-family: 'Cormorant Garamond', serif; font-size: 27px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { order: 2; padding: 45px 24px 48px; }
+      .hero-visual { order: 1; min-height: 390px; }
+      .hero-visual img { min-height: 390px; max-height: 440px; }
+      .hero-note { top: 12%; right: 6%; font-size: 21px; }
+      h1 { font-size: clamp(46px, 12vw, 64px); }
+      .about-grid, .services-grid, .clinic-grid, .booking-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 35px; }
+      .about-photo img { height: 370px; }
+      .services-grid { gap: 35px; }
+      .service-cards { grid-template-columns: repeat(2, 1fr); }
+      .service-card { min-height: 145px; }
+      .steps-grid { grid-template-columns: 1fr; gap: 28px; }
+      .step { padding: 0 0 0 0; }
+      .step:not(:last-child)::after { content: "↓"; right: 8px; top: 2px; }
+      .clinic-photo, .clinic-photo img { min-height: 300px; max-height: 360px; }
+      .clinic-info { padding: 42px 24px; }
+      .quotes { grid-template-columns: 1fr; }
+      .quote { padding: 23px; }
+      .booking-grid { gap: 30px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; }
+      .footer-links { gap: 13px 20px; }
+      .whatsapp-float { width: 50px; height: 50px; right: 16px; bottom: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Dr. Lucas Gusmão, página inicial">
+        <span><span class="brand-name">DR. LUCAS GUSMÃO</span><span class="brand-sub">OFTALMOLOGISTA</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Menu principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre o doutor</a>
+        <a href="#clinica">A clínica</a>
+        <a href="#agendamento">Agendamento</a>
+      </nav>
+      <a class="btn nav-cta" href="#agendamento"><i class="fa-brands fa-whatsapp"></i> Agendar via WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <div class="hero-content">
+          <div class="eyebrow">Saúde visual & qualidade de vida</div>
+          <h1>Dr. Lucas Gusmão <span>Oftalmologista</span></h1>
+          <p>Cuidar da sua visão é olhar para o seu futuro. Um atendimento atencioso, com foco na saúde ocular e no cuidado individualizado em cada etapa da vida.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#agendamento"><i class="fa-brands fa-whatsapp"></i> Agendar consulta <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="#sobre">Conheça o doutor</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1500&q=85" alt="Médico em ambiente clínico, imagem ilustrativa" fetchpriority="high">
+        <div class="hero-note"><span>VER</span><span>BEM</span><span>É VIVER</span><span>MELHOR</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85" alt="Profissional de saúde realizando exame, imagem ilustrativa" loading="lazy">
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">Sobre o doutor</div>
+          <h2>Um cuidado que começa em ouvir você.</h2>
+          <p>O Dr. Lucas Gusmão é apresentado aqui como médico oftalmologista em Belém — PA. Este espaço foi pensado para compartilhar sua trajetória, formação e a maneira como conduz cada atendimento.</p>
+          <p>Substitua este texto pela biografia verificada do médico, incluindo sua formação, experiência profissional e abordagem de cuidado. A comunicação deve refletir somente informações reais e confirmadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="clinic" id="clinica">
+      <div class="clinic-grid">
+        <div class="clinic-photo"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=85" alt="Interior de clínica moderna, imagem ilustrativa" loading="lazy"></div>
+        <div class="clinic-info">
+          <div class="eyebrow">A clínica</div>
+          <h2>Um espaço pensado para você.</h2>
+          <p>Um ambiente acolhedor é parte importante da experiência de atendimento. Atualize esta seção com fotos reais, endereço e informações confirmadas do consultório.</p>
+          <div class="clinic-details">
+            <div class="detail"><i class="fa-solid fa-location-dot"></i><div><strong>Endereço</strong><span>Belém — PA<br>Inserir endereço completo</span></div></div>
+            <div class="detail"><i class="fa-regular fa-clock"></i><div><strong>Horários</strong><span>Consulte a disponibilidade<br>pelo WhatsApp</span></div></div>
+          </div>
+          <a class="btn btn-outline" href="#agendamento"><i class="fa-regular fa-calendar"></i> Consultar atendimento</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials" aria-labelledby="testimonialsTitle">
+      <div class="container">
+        <div class="eyebrow">Experiência de atendimento</div>
+        <h2 id="testimonialsTitle">Cuidado em cada detalhe.</h2>
+        <div class="quotes">
+          <article class="quote reveal"><div class="quote-mark">“</div><p>Seu espaço para depoimentos pode destacar a experiência dos pacientes, sempre com autorização e sem promessas de resultado.</p><strong>Depoimento autorizado</strong><small>★★★★★</small></article>
+          <article class="quote reveal"><div class="quote-mark">“</div><p>Adicione aqui uma avaliação real, autorizada e fiel ao relato original de um paciente.</p><strong>Depoimento autorizado</strong><small>★★★★★</small></article>
+          <article class="quote reveal"><div class="quote-mark">“</div><p>Use esta área para compartilhar relatos autênticos, respeitando a privacidade e as regras profissionais aplicáveis.</p><strong>Depoimento autorizado</strong><small>★★★★★</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking" id="agendamento">
+      <div class="container booking-grid">
+        <div class="booking-intro reveal">
+          <div class="eyebrow">Vamos cuidar da sua visão</div>
+          <h2>Agende sua consulta.</h2>
+          <p>Preencha o formulário ao lado. Vamos abrir o WhatsApp com sua solicitação para que a equipe possa verificar a agenda e confirmar uma opção de horário.</p>
+        </div>
+        <form class="booking-form reveal" id="bookingForm">
+          <div class="form-grid">
+            <div class="field"><label for="fullName">Nome completo *</label><input id="fullName" name="fullName" type="text" placeholder="Digite seu nome" autocomplete="name" required maxlength="100"></div>
+            <div class="field"><label for="phone">Telefone / WhatsApp *</label><input id="phone" name="phone" type="tel" placeholder="(91) 99999-9999" autocomplete="tel" inputmode="tel" required maxlength="20"></div>
+            <div class="field"><label for="appointmentType">Tipo de atendimento *</label><select id="appointmentType" name="appointmentType" required><option value="">Selecione</option><option>Consulta oftalmológica</option><option>Exames oftalmológicos</option><option>Cirurgia ocular — informações</option><option>Oftalmologia infantil</option><option>Lentes de contato</option><option>Tratamento de glaucoma</option><option>Outro assunto</option></select></div>
+            <div class="field"><label for="preferredDate">Dia desejado *</label><input id="preferredDate" name="preferredDate" type="date" required></div>
+            <div class="field"><label for="period">Período de preferência *</label><select id="period" name="period" required><option value="">Selecione</option><option>Manhã</option><option>Tarde</option><option>Qualquer período</option></select></div>
+            <div class="field"><label for="returning">É primeira consulta?</label><select id="returning" name="returning"><option>Sim, primeira consulta</option><option>Não, já sou paciente</option></select></div>
+            <div class="field full"><label for="notes">Observações (opcional)</label><textarea id="notes" name="notes" maxlength="500" placeholder="Se desejar, informe alguma preferência de atendimento. Não inclua informações médicas sensíveis."></textarea></div>
+          </div>
+          <p class="form-note">* Campos obrigatórios. O envio abre o WhatsApp; a solicitação não confirma uma consulta automaticamente. A data e o horário serão confirmados pela equipe.</p>
+          <button class="btn" type="submit"><i class="fa-brands fa-whatsapp"></i> Enviar solicitação pelo WhatsApp <i class="fa-solid fa-arrow-right"></i></button>
+          <p class="form-status" id="formStatus" role="alert"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a class="brand" href="#inicio">
+          <span><span class="brand-name">DR. LUCAS GUSMÃO</span><span class="brand-sub">OFTALMOLOGISTA</span></span>
+        </a>
+        <nav class="footer-links" aria-label="Links do rodapé">
+          <a href="#inicio">Início</a><a href="#sobre">Sobre o doutor</a><a href="#clinica">A clínica</a><a href="#agendamento">Agendamento</a>
+        </nav>
+        <div class="socials">
+          
+          <a href="#inicio" aria-label="Voltar ao início"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>Cuidar da sua visão é cuidar da sua qualidade de vida.</span><span>© <span id="year"></span> Dr. Lucas Gusmão. Todos os direitos reservados.</span></div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" id="whatsappFloat" href="https://wa.me/5591989058986" target="_blank" rel="noopener noreferrer" aria-label="Falar com a clínica pelo WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script>
+    // Número de WhatsApp no formato internacional: 55 + DDD + número, sem espaços ou símbolos.
+    const WHATSAPP_NUMBER = '5591989058986';
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      document.body.classList.toggle('menu-open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Impede que o paciente selecione uma data passada.
+    const dateInput = document.getElementById('preferredDate');
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+      .toISOString().split('T')[0];
+    dateInput.min = localToday;
+
+    // Máscara simples de telefone brasileiro.
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', () => {
+      let digits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+      if (digits.length > 10) {
+        digits = digits.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+      } else if (digits.length > 6) {
+        digits = digits.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+      } else if (digits.length > 2) {
+        digits = digits.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+      } else if (digits.length > 0) {
+        digits = digits.replace(/^(\d*)/, '($1');
+      }
+      phoneInput.value = digits;
+    });
+
+    // Monta a mensagem e abre o WhatsApp para a equipe confirmar a disponibilidade.
+    document.getElementById('bookingForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.style.display = 'none';
+
+      if (!this.reportValidity()) return;
+
+      const data = new FormData(this);
+      const [year, month, day] = String(data.get('preferredDate')).split('-');
+      const dateFormatted = `${day}/${month}/${year}`;
+
+      const message = [
+        'Olá! Gostaria de solicitar um agendamento com o Dr. Lucas Gusmão.',
+        '',
+        `Nome: ${data.get('fullName').trim()}`,
+        `Telefone/WhatsApp: ${data.get('phone').trim()}`,
+        `Tipo de atendimento: ${data.get('appointmentType')}`,
+        `Dia desejado: ${dateFormatted}`,
+        `Período de preferência: ${data.get('period')}`,
+        `Primeira consulta: ${data.get('returning')}`,
+        data.get('notes') ? `Observações: ${String(data.get('notes')).trim()}` : '',
+        '',
+        'Por favor, poderiam informar os dias e horários disponíveis? Entendo que a consulta só estará confirmada após a resposta da equipe.'
+      ].filter(Boolean).join('\n');
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+
+      if (!newWindow) {
+        status.textContent = 'Não foi possível abrir uma nova janela. Permita pop-ups ou use o botão flutuante do WhatsApp.';
+        status.style.display = 'block';
+        // Fallback para navegadores que bloqueiam a nova janela.
+        window.location.href = url;
+      }
+    });
+
+    // Ano automático no rodapé.
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animação discreta ao aparecer na tela.
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
